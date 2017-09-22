@@ -24,12 +24,18 @@ public class Production {
 	
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column (name = "PRODUCTION_DATE")
-	private Date date;
+	private Date prodDate;
 	
-	private Boolean state;
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column (name = "SELL_DATE")
+	private Date sellDate;
 	
-	private Integer price;
+	@Column(name = "B_P")
+	private Integer buyPrice;
+	
+	@Column(name = "S_P")
+	private Integer sellPrice;
 	
 	@ManyToOne
-	private Chicken chicken;
+	private Animal animal;
 }

@@ -9,13 +9,13 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class ProductionDTO {
 	
-	private Integer id;
+	private Date buyDate;
 	
-	private Date date;
+	private Date sellDate;
 	
-	private Boolean state;
+	private Integer buyPrice;
 	
-	private Integer price;
+	private Integer sellPrice;
 	
 	
 }
