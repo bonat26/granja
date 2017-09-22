@@ -6,6 +6,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.mbl.farm.dao.UserDao;
+import com.mbl.farm.dto.UserDTO;
 import com.mbl.farm.model.User;
 
 @Service
@@ -15,28 +16,53 @@ public class UserServiceImpl implements UserService {
 	private UserDao dao;
 
 	@Override
-	public User create(User t) {
-		return dao.save(t);
+	public UserDTO transform(User u) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@Override
-	public void delete(User t) {
-		dao.delete(t);
+	public User transform(UserDTO u) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@Override
-	public void update(User t) {
-		dao.save(t);
+	public UserDTO create(UserDTO u) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@Override
-	public Page<User> getAll(Pageable pageable) {
-		return dao.findAll(pageable);
+	public void update(UserDTO u) {
+		// TODO Auto-generated method stub
+		
 	}
 
 	@Override
-	public User findById(Integer id) {
-		return dao.findOne(id);
+	public void delete(UserDTO u) {
+		// TODO Auto-generated method stub
+		
 	}
+
+	@Override
+	public Page<UserDTO> getAll(Pageable pageable) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Page<UserDTO> getTopFive(Pageable pageable) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public UserDTO findById(Integer id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	
 
 }
