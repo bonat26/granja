@@ -2,6 +2,7 @@ package com.mbl.farm.model;
 
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -24,7 +25,8 @@ public class Animal {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Integer id_Animal;
+	@Column(name = "ID_ANIMAL")
+	private Integer idAnimal;
 	
 	private String frecuency;
 	

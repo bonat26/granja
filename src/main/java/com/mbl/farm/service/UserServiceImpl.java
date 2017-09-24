@@ -13,7 +13,7 @@ import com.mbl.farm.model.User;
 public class UserServiceImpl implements UserService {
 
 	@Autowired
-	private UserDao dao;
+	private UserDao userDao;
 
 	@Override
 	public UserDTO transform(User u) {
@@ -22,37 +22,31 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public User transform(UserDTO u) {
+	public User transform(UserDTO userDto) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public UserDTO create(UserDTO u) {
+	public UserDTO create(UserDTO userDto) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public void update(UserDTO u) {
+	public void update(UserDTO userDto) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void delete(UserDTO u) {
+	public void delete(UserDTO userDto) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	public Page<UserDTO> getAll(Pageable pageable) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Page<UserDTO> getTopFive(Pageable pageable) {
 		// TODO Auto-generated method stub
 		return null;
 	}

@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 
 import com.mbl.farm.dao.AnimalDao;
 import com.mbl.farm.dto.AnimalDTO;
@@ -54,8 +55,7 @@ public class AnimalServiceImpl implements AnimalService{
 	}
 
 	@Override
-	public Page<AnimalDTO> getTopFive(Pageable pageable) {
-		// TODO Auto-generated method stub
+	public Page<AnimalDTO> getTopAnimals(Pageable pageable, Integer size) {
 		return null;
 	}
 

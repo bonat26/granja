@@ -30,10 +30,10 @@ public class Production {
 	@Column (name = "SELL_DATE")
 	private Date sellDate;
 	
-	@Column(name = "B_P")
+	@Column(name = "BUY_PRICE")
 	private Integer buyPrice;
 	
-	@Column(name = "S_P")
+	@Column(name = "SELL_PRICE")
 	private Integer sellPrice;
 	
 	@ManyToOne

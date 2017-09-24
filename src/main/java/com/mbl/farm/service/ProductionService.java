@@ -7,15 +7,15 @@ import com.mbl.farm.dto.ProductionDTO;
 import com.mbl.farm.model.Production;
 
 public interface ProductionService {
-	ProductionDTO transform (Production p);                 
+	ProductionDTO transform (Production production);                 
 	                                            
-	Production transform (ProductionDTO p);                 
+	Production transform (ProductionDTO productionDTO);                 
 	                                            
-	ProductionDTO create(ProductionDTO p);                  
+	ProductionDTO create(ProductionDTO productionDTO);                  
                                                 
-	void update(ProductionDTO p);                     
+	void update(ProductionDTO productionDTO);                     
 	                                            
-	void delete(ProductionDTO p);                     
+	void delete(ProductionDTO productionDTO);                     
 	                                            
 	Page<ProductionDTO> getAll(Pageable pageable);
 

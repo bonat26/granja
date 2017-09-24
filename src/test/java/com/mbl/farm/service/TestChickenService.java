@@ -34,7 +34,7 @@ public class TestChickenService {
 	
 	@Before
 	public void init() {
-		CHICKEN.setIdChicken(ID);
+		CHICKEN.setIdAnimal(ID);
 		CHICKEN.setType(TYPE);
 		CHICKEN.setFrecuency(FRECUENCY);
 	}
@@ -46,7 +46,7 @@ public class TestChickenService {
 		final Chicken ch = chickenService.findById(ID);
 		
 		Assert.assertNotNull(ch);
-		Assert.assertEquals(ch.getIdChicken(), ID);
+		Assert.assertEquals(ch.getIdAnimal(), ID);
 		Assert.assertEquals(ch.getType(), TYPE);
 		Assert.assertEquals(ch.getFrecuency(), FRECUENCY);
 	}
@@ -69,12 +69,12 @@ public class TestChickenService {
 	
 	@Test
 	public void testCreateChicken() {
-		Mockito.when(chickenDao.save(CHICKEN)).thenReturn(CreateChicken(ID,TYPE,FRECUENCY));
+		Mockito.when(chickenDao.save(CHICKEN)).thenReturn(CreateChicken(TYPE,FRECUENCY));
 		
 		final Chicken ch = chickenService.create(CHICKEN);
 		
 		Assert.assertNotNull(ch);
-		Assert.assertEquals(ch.getIdChicken(), ID);
+		Assert.assertEquals(ch.getIdAnimal(), ID);
 		Assert.assertEquals(ch.getType(), TYPE);
 		Assert.assertEquals(ch.getFrecuency(), FRECUENCY);
 	}
@@ -91,9 +91,8 @@ public class TestChickenService {
 		chickenService.update(CHICKEN);
 	}
 
-	private Chicken CreateChicken(Integer id, String type, String frecuency) {
+	private Chicken CreateChicken(String type, String frecuency) {
 		final Chicken ch = new Chicken();
-		ch.setIdChicken(ID);
 		ch.setType(TYPE);
 		ch.setFrecuency(FRECUENCY);
 		return ch;

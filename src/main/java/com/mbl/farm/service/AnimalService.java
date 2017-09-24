@@ -18,7 +18,7 @@ public interface AnimalService {
 	
 	Page<AnimalDTO> getAll(Pageable pageable);
 	
-	Page<AnimalDTO> getTopFive(Pageable pageable);
+	Page<AnimalDTO> getTopAnimals(Pageable pageable, Integer size);
 
 	AnimalDTO findById(Integer id);
 }
