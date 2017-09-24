@@ -7,9 +7,9 @@ import com.mbl.farm.dto.ProductionDTO;
 import com.mbl.farm.model.Production;
 
 public interface ProductionService {
-	ProductionDTO transform (Production production);                 
+	ProductionDTO transform (Production p);                 
 	                                            
-	Production transform (ProductionDTO productionDTO);                 
+	Production transform (ProductionDTO p);                 
 	                                            
 	ProductionDTO create(ProductionDTO productionDTO);                  
                                                 

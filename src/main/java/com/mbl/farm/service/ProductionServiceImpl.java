@@ -3,6 +3,7 @@ package com.mbl.farm.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.dozer.DozerBeanMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
@@ -17,16 +18,17 @@ public class ProductionServiceImpl implements ProductionService{
 	@Autowired
 	private ProductionDao productionDao;
 	
+	@Autowired
+	private DozerBeanMapper dozer;
+	
 	@Override
 	public ProductionDTO transform(Production p) {
-		// TODO Auto-generated method stub
-		return null;
+		return dozer.map(p, ProductionDTO.class);
 	}
 
 	@Override
-	public Production transform(ProductionDTO productionDTO) {
-		// TODO Auto-generated method stub
-		return null;
+	public Production transform(ProductionDTO p) {
+		return dozer.map(p, Production.class);
 	}
 
 	@Override
