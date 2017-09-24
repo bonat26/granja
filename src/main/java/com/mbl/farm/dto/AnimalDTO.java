@@ -7,7 +7,7 @@ import com.mbl.farm.model.Production;
 import lombok.Data;
 
 @Data
-public class AnimalDTO {
+public abstract class AnimalDTO {
 
 	private String frecuency;
 	

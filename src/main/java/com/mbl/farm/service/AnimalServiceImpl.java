@@ -56,15 +56,16 @@ public class AnimalServiceImpl implements AnimalService{
 	}
 
 	@Override
-	public Page<AnimalDTO> getTopAnimals(Pageable pageable, Integer size) {
-		return null;
-	}
-
-	@Override
 	public AnimalDTO findById(Integer id) {
 		final AnimalDTO a = transform(animalDao.findOne(id));
 		return a;
 	}
+	
+	@Override
+	public Page<AnimalDTO> getTopAnimals(Pageable pageable, Integer size) {
+		return null;
+	}
+
 	
 	public void Delete(Animal a) {
 		animalDao.delete(a);

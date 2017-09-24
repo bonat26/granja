@@ -11,8 +11,6 @@ public interface CRUD<T, ID extends Serializable> {
 	void delete(T t);
 
 	void update(T t);
-
-	//List<T> getAll();
 	
 	Page<T> getAll(Pageable pageable);
 

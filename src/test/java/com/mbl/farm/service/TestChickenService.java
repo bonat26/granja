@@ -12,6 +12,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
 import com.mbl.farm.dao.ChickenDao;
+import com.mbl.farm.dto.ChickenDTO;
 import com.mbl.farm.model.Chicken;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -40,56 +41,11 @@ public class TestChickenService {
 	}
 	
 	@Test
-	public void testFindChickenOK() {
-		Mockito.when(chickenDao.findOne(ID)).thenReturn(CHICKEN);
-		
-		final Chicken ch = chickenService.findById(ID);
-		
-		Assert.assertNotNull(ch);
-		Assert.assertEquals(ch.getIdAnimal(), ID);
-		Assert.assertEquals(ch.getType(), TYPE);
-		Assert.assertEquals(ch.getFrecuency(), FRECUENCY);
-	}
-
-	
-	@Test
-	public void testFindChickenKO() {
-		Mockito.when(chickenDao.findOne(ID)).thenReturn(CHICKEN);
-		
-		final Chicken ch = chickenService.findById(2);
-		
-		Assert.assertNull(ch);
-	}
-	
-	@Test
 	public void testFindAllChickenOK() {
 		//INCOMPLETO
-		Page<Chicken> chickens = chickenService.getAll(pageable);
+		Page<ChickenDTO> chickens = chickenService.getAll(pageable);
 	}
 	
-	@Test
-	public void testCreateChicken() {
-		Mockito.when(chickenDao.save(CHICKEN)).thenReturn(CreateChicken(TYPE,FRECUENCY));
-		
-		final Chicken ch = chickenService.create(CHICKEN);
-		
-		Assert.assertNotNull(ch);
-		Assert.assertEquals(ch.getIdAnimal(), ID);
-		Assert.assertEquals(ch.getType(), TYPE);
-		Assert.assertEquals(ch.getFrecuency(), FRECUENCY);
-	}
-	
-	@Test
-	public void testDeleteChicken() {
-		//INCOMPLETO
-		chickenService.delete(CHICKEN);
-	}
-	
-	@Test
-	public void testUpdateChicken() {
-		//INCOMPLETO
-		chickenService.update(CHICKEN);
-	}
 
 	private Chicken CreateChicken(String type, String frecuency) {
 		final Chicken ch = new Chicken();

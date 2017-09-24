@@ -7,18 +7,18 @@ import com.mbl.farm.dto.AnimalDTO;
 import com.mbl.farm.model.Animal;
 
 public interface AnimalService {
-	
-	AnimalDTO transform (Animal a);
-	
-	Animal transform (AnimalDTO animalDTO);
-	
+
+	AnimalDTO transform(Animal a);
+
+	Animal transform(AnimalDTO a);
+
 	AnimalDTO create(AnimalDTO animalDTO);
 
 	void update(AnimalDTO animalDTO);
-	
+
 	Page<AnimalDTO> getAll(Pageable pageable);
-	
-	Page<AnimalDTO> getTopAnimals(Pageable pageable, Integer size);
 
 	AnimalDTO findById(Integer id);
+	
+	Page<AnimalDTO> getTopAnimals(Pageable pageable, Integer size);
 }

@@ -7,23 +7,23 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.mbl.farm.dto.ChickenDTO;
-import com.mbl.farm.service.ChickenService;
+import com.mbl.farm.dto.CowDTO;
+import com.mbl.farm.service.CowService;
 
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @RestController
-@RequestMapping(value = "/chicken")
-public class ChickenController{
-
+@RequestMapping(value = "/cow")
+public class CowController {
+	
 	@Autowired
-	private ChickenService chickenService;
+	private CowService cowService;
 
 	@RequestMapping(method = RequestMethod.GET)
-	public Page<ChickenDTO> getAll(Pageable pageable) {
+	public Page<CowDTO> getAll(Pageable pageable) {
 		log.info("Vamos a recuperar todos los pollos");
-		return chickenService.getAll(pageable);
+		return cowService.getAll(pageable);
 	}
 
 }

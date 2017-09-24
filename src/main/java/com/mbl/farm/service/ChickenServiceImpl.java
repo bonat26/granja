@@ -1,49 +1,47 @@
 package com.mbl.farm.service;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import org.dozer.DozerBeanMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.mbl.farm.dao.ChickenDao;
+import com.mbl.farm.dto.ChickenDTO;
 import com.mbl.farm.model.Chicken;
 
 @Service
 public class ChickenServiceImpl implements ChickenService {
+
+	@Autowired
+	private ChickenDao chickenDao;
 	
 	@Autowired
-	private ChickenDao dao;
-
-	@Override
-	public Chicken create(Chicken t) {
-		return dao.save(t);
-	}
-
-	@Override
-	public void delete(Chicken t) {
-		dao.delete(t);
-	}
-
-	@Override
-	public void update(Chicken t) {
-		dao.save(t);
-	}
-
-	/*@Override
-	public List<Chicken> getAll() {
-		final List<Chicken> chickens = new ArrayList<>();
-		dao.findAll().forEach(ch -> chickens.add(ch));
-		return chickens;
-	}*/
+	private DozerBeanMapper dozer;
 	
 	@Override
-	public Page<Chicken> getAll(Pageable pageable) {
-		return dao.findAll(pageable);
+	public Chicken transform(ChickenDTO ch) {
+		return dozer.map(ch, Chicken.class);
 	}
 
 	@Override
-	public Chicken findById(Integer id) {
-		return dao.findOne(id);
+	public ChickenDTO transform(Chicken ch) {
+		return dozer.map(ch, ChickenDTO.class);
 	}
 
+	@Override
+	public Page<ChickenDTO> getAll(Pageable pageable) {
+		final Iterable<Chicken> chickens = chickenDao.findAll();
+		final List<ChickenDTO> chickenDTOs = new ArrayList<>();
+		chickens.forEach(a -> {
+			final ChickenDTO chickenDto = transform(a);
+			chickenDTOs.add(chickenDto);
+		});
+		final Page<ChickenDTO> res = new PageImpl<ChickenDTO>(chickenDTOs, pageable, chickenDTOs.size());
+		return res;
+	}
 }
