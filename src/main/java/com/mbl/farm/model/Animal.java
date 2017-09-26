@@ -21,7 +21,7 @@ import lombok.Data;
 @Inheritance
 @DiscriminatorColumn(name = "ANIM_TYPE")
 @Table(name = "ANIMALS")
-public class Animal {
+public abstract class Animal {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
