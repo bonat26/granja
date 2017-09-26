@@ -26,7 +26,7 @@ dependencies {
 	compile group: 'org.projectlombok', name: 'lombok', version: '1.16.18'
 	compile('org.springframework.boot:spring-boot-starter-web')
 	compile('org.springframework.boot:spring-boot-starter-data-jpa')
-	compile('net.sf.dozer:dozer:5.5.1')
+	compile group: 'net.sf.dozer', name: 'dozer', version: '5.5.1'
 	runtime('mysql:mysql-connector-java')
 	testCompile('org.springframework.boot:spring-boot-starter-test')
 }

@@ -8,11 +8,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
 
 import com.mbl.farm.dao.ProductionDao;
 import com.mbl.farm.dto.ProductionDTO;
 import com.mbl.farm.model.Production;
 
+@Service
 public class ProductionServiceImpl implements ProductionService{
 
 	@Autowired
