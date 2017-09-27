@@ -1,7 +1,6 @@
 package com.mbl.farm.service;
 
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
+import java.util.List;
 
 import com.mbl.farm.dto.AnimalDTO;
 import com.mbl.farm.model.Animal;
@@ -12,13 +11,13 @@ public interface AnimalService {
 
 	Animal transform(AnimalDTO a);
 
-	AnimalDTO create(AnimalDTO animalDTO);
+	Animal create(Animal a);
 
-	void update(AnimalDTO animalDTO);
+	void update(Animal a);
 
-	Page<AnimalDTO> getAll(Pageable pageable);
+	List<Animal> getAll(Integer page, Integer size);
 
-	AnimalDTO findById(Integer id);
+	Animal findById(Integer id);
 	
-	Page<AnimalDTO> getTopAnimals(Pageable pageable, Integer size);
+	List<Animal> getTopAnimals(Integer size);
 }

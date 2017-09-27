@@ -3,15 +3,13 @@ package com.mbl.farm.service;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.dozer.DozerBeanMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageImpl;
-import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import com.mbl.farm.dao.AnimalDao;
 import com.mbl.farm.dto.AnimalDTO;
+import com.mbl.farm.mapper.AnimalMapper;
 import com.mbl.farm.model.Animal;
 
 @Service
@@ -21,50 +19,42 @@ public class AnimalServiceImpl implements AnimalService{
 	private AnimalDao animalDao;
 	
 	@Autowired
-	private DozerBeanMapper dozer;
+	private AnimalMapper mapper;
 	
 	@Override
 	public AnimalDTO transform(Animal a) {
-		return dozer.map(a, AnimalDTO.class);
+		return mapper.toDTO(a);
 	}
 
 	@Override
 	public Animal transform(AnimalDTO a) {
-		return dozer.map(a, Animal.class);
+		return mapper.toModel(a);
 	}
 
 	@Override
-	public AnimalDTO create(AnimalDTO animalDTO) {
-		final Animal a = transform(animalDTO);
-		return transform(animalDao.save(a));
+	public Animal create(Animal a) {
+		return animalDao.save(a);
 	}
 
 	@Override
-	public void update(AnimalDTO animalDTO) {
-		final Animal a = transform(animalDTO);
+	public void update(Animal a) {
 		animalDao.save(a);
 	}
 
 	@Override
-	public Page<AnimalDTO> getAll(Pageable pageable) {
-		final Iterable<Animal> animals = animalDao.findAll();
-		final List<AnimalDTO> animalDTOs = new ArrayList<>();
-		animals.forEach(a -> {
-			final AnimalDTO animalDTO = transform(a);
-			animalDTOs.add(animalDTO);
-		});
-		final Page<AnimalDTO> res = new PageImpl<AnimalDTO>(animalDTOs, pageable, animalDTOs.size());
-		return res;
+	public List<Animal> getAll(Integer page, Integer size) {
+		final List<Animal> animals = new ArrayList<>();
+		animalDao.findAll(new PageRequest(page, size)).forEach(a -> animals.add(a));
+		return animals;
 	}
 
 	@Override
-	public AnimalDTO findById(Integer id) {
-		final AnimalDTO a = transform(animalDao.findOne(id));
-		return a;
+	public Animal findById(Integer id) {
+		return animalDao.findOne(id);
 	}
 	
 	@Override
-	public Page<AnimalDTO> getTopAnimals(Pageable pageable, Integer size) {
+	public List<Animal> getTopAnimals(Integer size) {
 		return null;
 	}
 
