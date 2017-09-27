@@ -1,8 +1,11 @@
 package com.mbl.farm.mapper;
 
+import org.springframework.stereotype.Component;
+
 import com.mbl.farm.dto.AnimalDTO;
 import com.mbl.farm.model.Animal;
 
+@Component
 public class AnimalMapperImpl extends AbstractMapper<Animal, AnimalDTO> implements AnimalMapper{
 
 	@Override
