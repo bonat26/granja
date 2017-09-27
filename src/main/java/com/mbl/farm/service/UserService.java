@@ -19,4 +19,6 @@ public interface UserService {
 	List<User> getAll(Integer page, Integer size);
 
 	User findById(Integer id);
+
+	List<UserDTO> transform(List<User> users);
 }

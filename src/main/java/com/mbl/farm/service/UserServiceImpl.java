@@ -60,6 +60,13 @@ public class UserServiceImpl implements UserService {
 		return userDao.findOne(id);
 	}
 
+	@Override
+	public List<UserDTO> transform(List<User> users) {
+		final List<UserDTO> userDTOs = new ArrayList<>();
+		users.forEach(c -> userDTOs.add(transform(c)));
+		return userDTOs;
+	}
+
 	
 
 	
