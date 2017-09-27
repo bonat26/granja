@@ -7,7 +7,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -35,7 +34,4 @@ public class Production {
 	
 	@Column(name = "SELL_PRICE")
 	private Integer sellPrice;
-	
-	@ManyToOne
-	private Animal animal;
 }

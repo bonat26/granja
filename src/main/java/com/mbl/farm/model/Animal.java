@@ -10,7 +10,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -30,9 +29,6 @@ public abstract class Animal {
 	
 	private String frecuency;
 	
-	@ManyToOne
-	private User user;
-	
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "animal")
+	@OneToMany(fetch = FetchType.LAZY)
 	private List<Production> productions;
 }
