@@ -1,5 +1,7 @@
 package com.mbl.farm.service;
 
+import java.util.List;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -12,5 +14,5 @@ public interface ChickenService{
 	
 	Chicken transform (ChickenDTO ch);
 
-	Page<ChickenDTO> getAll(Pageable pageable);
+	List<Chicken> getAll(Integer page, Integer size);
 }
