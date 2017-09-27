@@ -1,7 +1,6 @@
 package com.mbl.farm.service;
 
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
+import java.util.List;
 
 import com.mbl.farm.dto.CowDTO;
 import com.mbl.farm.model.Cow;
@@ -11,5 +10,5 @@ public interface CowService {
 	
 	Cow transform (CowDTO c);
 
-	Page<CowDTO> getAll(Pageable pageable);
+	List<Cow> getAll(Integer page, Integer size);
 }
