@@ -13,6 +13,6 @@ public class UserDTO {
 	
 	private String name;
 	
-	private List<Animal> animals;
+	private List<Integer> animalsIDs;
 
 }
