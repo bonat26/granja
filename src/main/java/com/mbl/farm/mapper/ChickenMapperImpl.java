@@ -26,7 +26,7 @@ public class ChickenMapperImpl extends AbstractMapper<Chicken, ChickenDTO> imple
 	@Override
 	public ChickenDTO toDTO(Chicken model) {
 		final ChickenDTO chickenDTO = super.toDTO(model);
-		final List<Integer> prodIDs = listMapper.toIntList(model.getProductions());
+		final List<Integer> prodIDs = listMapper.productionListToIntList(model.getProductions());
 		chickenDTO.setProductionsIDs(prodIDs);
 		return chickenDTO;
 	}

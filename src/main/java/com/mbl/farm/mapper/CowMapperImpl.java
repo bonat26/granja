@@ -26,7 +26,7 @@ public class CowMapperImpl extends AbstractMapper<Cow, CowDTO> implements CowMap
 	@Override
 	public CowDTO toDTO(Cow model) {
 		final CowDTO cowDTO = super.toDTO(model);
-		final List<Integer> prodIDs = listMapper.toIntList(model.getProductions());
+		final List<Integer> prodIDs = listMapper.productionListToIntList(model.getProductions());
 		cowDTO.setProductionsIDs(prodIDs);
 		return cowDTO;
 	}

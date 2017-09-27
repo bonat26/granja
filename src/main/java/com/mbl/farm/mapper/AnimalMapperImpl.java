@@ -27,7 +27,7 @@ public class AnimalMapperImpl extends AbstractMapper<Animal, AnimalDTO> implemen
 	@Override
 	public AnimalDTO toDTO(Animal model) {
 		final AnimalDTO animalDTO = super.toDTO(model);
-		final List<Integer> prodIDs = listMapper.toIntList(model.getProductions());
+		final List<Integer> prodIDs = listMapper.productionListToIntList(model.getProductions());
 		animalDTO.setProductionsIDs(prodIDs);
 		return animalDTO;
 	}
