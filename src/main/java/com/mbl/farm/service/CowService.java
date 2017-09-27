@@ -11,4 +11,6 @@ public interface CowService {
 	Cow transform (CowDTO c);
 
 	List<Cow> getAll(Integer page, Integer size);
+
+	List<CowDTO> transform(List<Cow> cows);
 }

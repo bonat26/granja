@@ -63,4 +63,11 @@ public class AnimalServiceImpl implements AnimalService{
 		animalDao.delete(a);
 	}
 
+	@Override
+	public List<AnimalDTO> transform(List<Animal> animals) {
+		final List<AnimalDTO> animalDTOs = new ArrayList<>();
+		animals.forEach(c -> animalDTOs.add(transform(c)));
+		return animalDTOs;
+	}
+
 }

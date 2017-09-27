@@ -43,7 +43,6 @@ public class TestChickenService {
 	@Test
 	public void testFindAllChickenOK() {
 		//INCOMPLETO
-		Page<ChickenDTO> chickens = chickenService.getAll(pageable);
 	}
 	
 

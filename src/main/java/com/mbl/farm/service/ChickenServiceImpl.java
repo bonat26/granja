@@ -38,5 +38,12 @@ public class ChickenServiceImpl implements ChickenService {
 		return chickens;
 	}
 
+	@Override
+	public List<ChickenDTO> transform(List<Chicken> chickens) {
+		final List<ChickenDTO> chickenDTOs = new ArrayList<>();
+		chickens.forEach(c -> chickenDTOs.add(transform(c)));
+		return chickenDTOs;
+	}
+
 	
 }

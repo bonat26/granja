@@ -58,6 +58,13 @@ public class ProductionServiceImpl implements ProductionService{
 		return productionDao.findOne(id);
 	}
 
+	@Override
+	public List<ProductionDTO> transform(List<Production> prods) {
+		final List<ProductionDTO> prodDTOs = new ArrayList<>();
+		prods.forEach(c -> prodDTOs.add(transform(c)));
+		return prodDTOs;
+	}
+
 	
 
 }

@@ -38,5 +38,12 @@ public class CowServiceImpl implements CowService{
 		return cows;
 	}
 
+	@Override
+	public List<CowDTO> transform(List<Cow> cows) {
+		final List<CowDTO> cowDTOs = new ArrayList<>();
+		cows.forEach(c -> cowDTOs.add(transform(c)));
+		return cowDTOs;
+	}
+
 
 }

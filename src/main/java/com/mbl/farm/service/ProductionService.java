@@ -19,4 +19,6 @@ public interface ProductionService {
 	List<Production> getAll(Integer page, Integer size);
 
 	Production findById(Integer id);
+
+	List<ProductionDTO> transform(List<Production> prods);
 }

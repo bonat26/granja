@@ -12,4 +12,6 @@ public interface ChickenService{
 	Chicken transform (ChickenDTO ch);
 
 	List<Chicken> getAll(Integer page, Integer size);
+
+	List<ChickenDTO> transform(List<Chicken> chickens);
 }

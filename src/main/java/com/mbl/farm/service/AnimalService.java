@@ -20,4 +20,6 @@ public interface AnimalService {
 	Animal findById(Integer id);
 	
 	List<Animal> getTopAnimals(Integer size);
+
+	List<AnimalDTO> transform(List<Animal> animals);
 }
