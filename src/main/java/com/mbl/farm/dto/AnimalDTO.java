@@ -11,5 +11,5 @@ public abstract class AnimalDTO {
 
 	private String frecuency;
 	
-	private List<Production> productions;
+	private List<Integer> productionsIDs;
 }
