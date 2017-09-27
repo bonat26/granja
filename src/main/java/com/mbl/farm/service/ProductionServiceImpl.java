@@ -3,15 +3,13 @@ package com.mbl.farm.service;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.dozer.DozerBeanMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageImpl;
-import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import com.mbl.farm.dao.ProductionDao;
 import com.mbl.farm.dto.ProductionDTO;
+import com.mbl.farm.mapper.ProductionMapper;
 import com.mbl.farm.model.Production;
 
 @Service
@@ -21,53 +19,45 @@ public class ProductionServiceImpl implements ProductionService{
 	private ProductionDao productionDao;
 	
 	@Autowired
-	private DozerBeanMapper dozer;
+	private ProductionMapper mapper;
 	
 	@Override
 	public ProductionDTO transform(Production p) {
-		return dozer.map(p, ProductionDTO.class);
+		return mapper.toDTO(p);
 	}
 
 	@Override
 	public Production transform(ProductionDTO p) {
-		return dozer.map(p, Production.class);
+		return mapper.toModel(p);
 	}
 
 	@Override
-	public ProductionDTO create(ProductionDTO productionDTO) {
-		final Production p = transform(productionDTO);
-		return transform(productionDao.save(p));
+	public Production create(Production p) {
+		return productionDao.save(p);
 	}
 
 	@Override
-	public void update(ProductionDTO productionDTO) {
-		final Production p = transform(productionDTO);
+	public void update(Production p) {
 		productionDao.save(p);
-		
 	}
 
 	@Override
-	public void delete(ProductionDTO productionDTO) {
-		final Production p = transform(productionDTO);
+	public void delete(Production p) {
 		productionDao.delete(p);
 	}
 
 	@Override
-	public Page<ProductionDTO> getAll(Pageable pageable) {
-		final Iterable<Production> productions = productionDao.findAll();
-		final List<ProductionDTO> productionDTOs = new ArrayList<>();
-		productions.forEach(p -> {
-			final ProductionDTO productionDTO = transform(p);
-			productionDTOs.add(productionDTO);
-		});
-		final Page<ProductionDTO> res = new PageImpl<ProductionDTO>(productionDTOs, pageable, productionDTOs.size());
-		return res;
+	public List<Production> getAll(Integer page, Integer size) {
+		List<Production> prods = new ArrayList<>();
+		productionDao.findAll(new PageRequest(page, size)).forEach(p -> prods.add(p));
+		return prods;
 	}
 
 	@Override
-	public ProductionDTO findById(Integer id) {
-		final Production p = productionDao.findOne(id);
-		return transform(p);
+	public Production findById(Integer id) {
+		return productionDao.findOne(id);
 	}
+
+	
 
 }

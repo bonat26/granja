@@ -1,7 +1,6 @@
 package com.mbl.farm.service;
 
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
+import java.util.List;
 
 import com.mbl.farm.dto.ProductionDTO;
 import com.mbl.farm.model.Production;
@@ -11,13 +10,13 @@ public interface ProductionService {
 	                                            
 	Production transform (ProductionDTO p);                 
 	                                            
-	ProductionDTO create(ProductionDTO productionDTO);                  
+	Production create(Production p);                  
                                                 
-	void update(ProductionDTO productionDTO);                     
+	void update(Production p);                     
 	                                            
-	void delete(ProductionDTO productionDTO);                     
+	void delete(Production p);                     
 	                                            
-	Page<ProductionDTO> getAll(Pageable pageable);
+	List<Production> getAll(Integer page, Integer size);
 
-	ProductionDTO findById(Integer id);
+	Production findById(Integer id);
 }
