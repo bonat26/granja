@@ -1,12 +1,15 @@
 package com.mbl.farm.service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import com.mbl.farm.dao.UserDao;
 import com.mbl.farm.dto.UserDTO;
+import com.mbl.farm.mapper.UserMapper;
 import com.mbl.farm.model.User;
 
 @Service
@@ -14,48 +17,50 @@ public class UserServiceImpl implements UserService {
 
 	@Autowired
 	private UserDao userDao;
+	
+	@Autowired
+	private UserMapper mapper;
 
 	@Override
 	public UserDTO transform(User u) {
-		// TODO Auto-generated method stub
-		return null;
+		return mapper.toDTO(u);
 	}
 
 	@Override
-	public User transform(UserDTO userDto) {
-		// TODO Auto-generated method stub
-		return null;
+	public User transform(UserDTO u) {
+		return mapper.toModel(u);
 	}
 
 	@Override
-	public UserDTO create(UserDTO userDto) {
-		// TODO Auto-generated method stub
-		return null;
+	public User create(User u) {
+		return userDao.save(u);
 	}
 
 	@Override
-	public void update(UserDTO userDto) {
-		// TODO Auto-generated method stub
+	public void update(User u) {
+		userDao.save(u);
 		
 	}
 
 	@Override
-	public void delete(UserDTO userDto) {
-		// TODO Auto-generated method stub
+	public void delete(User u) {
+		userDao.delete(u);
 		
 	}
 
 	@Override
-	public Page<UserDTO> getAll(Pageable pageable) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<User> getAll(Integer page, Integer size) {
+		List<User> users = new ArrayList<>();
+		userDao.findAll(new PageRequest(page, size)).forEach(u -> users.add(u));
+		return users;
 	}
 
 	@Override
-	public UserDTO findById(Integer id) {
-		// TODO Auto-generated method stub
-		return null;
+	public User findById(Integer id) {
+		return userDao.findOne(id);
 	}
+
+	
 
 	
 

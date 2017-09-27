@@ -1,7 +1,6 @@
 package com.mbl.farm.service;
 
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
+import java.util.List;
 
 import com.mbl.farm.dto.UserDTO;
 import com.mbl.farm.model.User;
@@ -11,13 +10,13 @@ public interface UserService {
 	
 	User transform (UserDTO u);
 	
-	UserDTO create(UserDTO u);
+	User create(User u);
 
-	void update(UserDTO u);
+	void update(User u);
 	
-	void delete(UserDTO u);
+	void delete(User u);
 	
-	Page<UserDTO> getAll(Pageable pageable);
+	List<User> getAll(Integer page, Integer size);
 
-	UserDTO findById(Integer id);
+	User findById(Integer id);
 }
