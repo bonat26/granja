@@ -12,24 +12,24 @@ import com.mbl.farm.model.User;
 @Component
 public class UserMapperImpl extends AbstractMapper<User, UserDTO> implements UserMapper{
 	
-	@Autowired
-	private ListMapper listMapper;
+	/*@Autowired
+	private ListMapper listMapper;*/
 	
-	@Override
+	/*@Override
 	public User toModel(UserDTO dto) {
 		final User user = super.toModel(dto);
 		List<Animal> animals = listMapper.toAnimalList(dto.getAnimalsIDs());
 		user.setAnimals(animals);
 		return user;
-	}
+	}*/
 	
-	@Override
+	/*@Override
 	public UserDTO toDTO(User model) {
 		final UserDTO userDTO = super.toDTO(model);
 		final List<Integer> animalIDs = listMapper.animalListToIntList(model.getAnimals());
 		userDTO.setAnimalsIDs(animalIDs);
 		return userDTO;
-	}
+	}*/
 	
 	@Override
 	protected Class<? extends User> getModelClazz() {

@@ -18,6 +18,8 @@ public interface ChickenService{
 	Chicken findOne(Integer id);
 
 	List<Chicken> getAll(Integer page, Integer size);
+	
+	List<Chicken> getAllByUserId(Integer page, Integer size, Integer id);
 
 	List<ChickenDTO> transform(List<Chicken> chickens);
 }

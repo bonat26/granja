@@ -8,6 +8,4 @@ public class AnimalDTO {
 	private String type;
 	
 	private String species;
-	
-	//private List<Integer> productionsIDs;
 }
