@@ -6,6 +6,7 @@ import com.mbl.farm.dto.CowDTO;
 import com.mbl.farm.model.Cow;
 
 public interface CowService {
+	
 	CowDTO transform (Cow c);
 	
 	Cow transform (CowDTO c);

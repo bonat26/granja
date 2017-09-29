@@ -10,6 +10,12 @@ public interface ChickenService{
 	ChickenDTO transform (Chicken ch);
 	
 	Chicken transform (ChickenDTO ch);
+	
+	Chicken create (Chicken c);
+	
+	void update (Chicken c);
+	
+	Chicken findOne(Integer id);
 
 	List<Chicken> getAll(Integer page, Integer size);
 

@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.mbl.farm.dto.AnimalDTO;
 import com.mbl.farm.dto.ChickenDTO;
-import com.mbl.farm.model.Animal;
 import com.mbl.farm.model.Chicken;
 import com.mbl.farm.service.ChickenService;
 
@@ -26,18 +25,18 @@ public class ChickenController{
 	private ChickenService chickenService;
 	
 	@RequestMapping(method = RequestMethod.POST)
-	public AnimalDTO create(@RequestBody AnimalDTO a) {
+	public AnimalDTO create(@RequestBody ChickenDTO a) {
 		log.info("Intentando crear un pollo");
-		final Animal animal = animalService.transform(a);
-		animalService.create(animal);
-		return animalService.transform(animal);
+		final Chicken chicken = chickenService.transform(a);
+		chickenService.create(chicken);
+		return chickenService.transform(chicken);
 	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-	public void update(@RequestBody AnimalDTO a) {
+	public void update(@RequestBody ChickenDTO a) {
 		log.info("Vamos a actualizar un pollo");
-		final Animal animal = animalService.transform(a);
-		animalService.update(animal);
+		final Chicken chicken = chickenService.transform(a);
+		chickenService.update(chicken);
 	}
 
 	@RequestMapping(method = RequestMethod.GET)
@@ -45,6 +44,12 @@ public class ChickenController{
 		log.info("Vamos a recuperar todos los pollos");
 		final List<Chicken> chickens = chickenService.getAll(page, size);
 		return chickenService.transform(chickens);
+	}
+	
+	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
+	public ChickenDTO findById(@RequestParam(name = "id") Integer id) {
+		final Chicken chicken = chickenService.findOne(id);
+		return chickenService.transform(chicken);
 	}
 
 }

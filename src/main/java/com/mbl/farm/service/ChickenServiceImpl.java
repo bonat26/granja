@@ -32,6 +32,21 @@ public class ChickenServiceImpl implements ChickenService {
 	}
 
 	@Override
+	public Chicken create(Chicken c) {
+		return chickenDao.save(c);
+	}
+	
+	@Override
+	public void update(Chicken c) {
+		chickenDao.save(c);
+	}
+	
+	@Override
+	public Chicken findOne(Integer id) {
+		return chickenDao.findOne(id);
+	}
+
+	@Override
 	public List<Chicken> getAll(Integer page, Integer size) {
 		final List<Chicken> chickens = new ArrayList<>();
 		chickenDao.findAll(new PageRequest(page, size)).forEach(c -> chickens.add(c));
@@ -44,6 +59,7 @@ public class ChickenServiceImpl implements ChickenService {
 		chickens.forEach(c -> chickenDTOs.add(transform(c)));
 		return chickenDTOs;
 	}
+
 
 	
 }
