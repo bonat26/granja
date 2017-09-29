@@ -12,7 +12,7 @@ import com.mbl.farm.model.Production;
 @Component
 public class AnimalMapperImpl extends AbstractMapper<Animal, AnimalDTO> implements AnimalMapper{
 
-	@Autowired
+	/*@Autowired
 	private ListMapper listMapper;
 
 	@Override
@@ -21,16 +21,16 @@ public class AnimalMapperImpl extends AbstractMapper<Animal, AnimalDTO> implemen
 		List<Production> prods = listMapper.toProdList(animalDTO.getProductionsIDs());
 		animal.setProductions(prods);
 		return animal;
-	}
+	}*/
 	
 	
-	@Override
+	/*@Override
 	public AnimalDTO toDTO(Animal model) {
 		final AnimalDTO animalDTO = super.toDTO(model);
 		final List<Integer> prodIDs = listMapper.productionListToIntList(model.getProductions());
 		animalDTO.setProductionsIDs(prodIDs);
 		return animalDTO;
-	}
+	}*/
 	
 	@Override
 	protected Class<? extends Animal> getModelClazz() {

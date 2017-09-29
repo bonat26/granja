@@ -6,5 +6,5 @@ import lombok.EqualsAndHashCode;
 @Data
 public class ChickenDTO extends AnimalDTO{
 	
-	private String type;
+	
 }

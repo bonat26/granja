@@ -12,7 +12,7 @@ import com.mbl.farm.model.Production;
 @Component
 public class CowMapperImpl extends AbstractMapper<Cow, CowDTO> implements CowMapper{
 
-	@Autowired
+	/*@Autowired
 	private ListMapper listMapper;
 
 	@Override
@@ -29,7 +29,7 @@ public class CowMapperImpl extends AbstractMapper<Cow, CowDTO> implements CowMap
 		final List<Integer> prodIDs = listMapper.productionListToIntList(model.getProductions());
 		cowDTO.setProductionsIDs(prodIDs);
 		return cowDTO;
-	}
+	}*/
 	
 	@Override
 	protected Class<? extends Cow> getModelClazz() {

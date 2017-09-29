@@ -27,7 +27,8 @@ public abstract class Animal {
 	@Column(name = "ID_ANIMAL")
 	private Integer idAnimal;
 	
-	private String frecuency;
+	@Column(columnDefinition = "varchar(2)")
+	private String type;
 	
 	@OneToMany(fetch = FetchType.LAZY)
 	private List<Production> productions;

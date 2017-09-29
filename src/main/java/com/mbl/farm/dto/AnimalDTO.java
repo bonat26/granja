@@ -9,7 +9,7 @@ import lombok.Data;
 @Data
 public abstract class AnimalDTO {
 
-	private String frecuency;
+	private String type;
 	
-	private List<Integer> productionsIDs;
+	//private List<Integer> productionsIDs;
 }
