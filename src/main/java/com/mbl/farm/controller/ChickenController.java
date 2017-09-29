@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.mbl.farm.dto.AnimalDTO;
 import com.mbl.farm.dto.ChickenDTO;
 import com.mbl.farm.model.Chicken;
 import com.mbl.farm.service.ChickenService;
@@ -25,7 +24,7 @@ public class ChickenController{
 	private ChickenService chickenService;
 	
 	@RequestMapping(method = RequestMethod.POST)
-	public AnimalDTO create(@RequestBody ChickenDTO a) {
+	public ChickenDTO create(@RequestBody ChickenDTO a) {
 		log.info("Intentando crear un pollo");
 		final Chicken chicken = chickenService.transform(a);
 		chickenService.create(chicken);
@@ -51,5 +50,4 @@ public class ChickenController{
 		final Chicken chicken = chickenService.findOne(id);
 		return chickenService.transform(chicken);
 	}
-
 }

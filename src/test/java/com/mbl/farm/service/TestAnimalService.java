@@ -15,7 +15,6 @@ public class TestAnimalService {
 	
 	private static final Integer ID = 1;
 	private static final String FRECUENCY = "1";
-	private static final AnimalDTO ANIMAL = new ChickenDTO();
 	
 	@InjectMocks
 	private AnimalService animalService = new AnimalServiceImpl();

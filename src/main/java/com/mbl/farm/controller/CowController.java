@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.mbl.farm.dto.AnimalDTO;
 import com.mbl.farm.dto.CowDTO;
 import com.mbl.farm.model.Cow;
 import com.mbl.farm.service.CowService;
@@ -25,7 +24,7 @@ public class CowController {
 	private CowService cowService;
 	
 	@RequestMapping(method = RequestMethod.POST)
-	public AnimalDTO create(@RequestBody CowDTO c) {
+	public CowDTO create(@RequestBody CowDTO c) {
 		log.info("Intentando crear una vaca");
 		final Cow cow = cowService.transform(c);
 		cowService.create(cow);

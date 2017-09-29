@@ -1,15 +1,13 @@
 package com.mbl.farm.dto;
 
-import java.util.List;
-
-import com.mbl.farm.model.Production;
-
 import lombok.Data;
 
 @Data
-public abstract class AnimalDTO {
+public class AnimalDTO {
 
 	private String type;
+	
+	private String species;
 	
 	//private List<Integer> productionsIDs;
 }
