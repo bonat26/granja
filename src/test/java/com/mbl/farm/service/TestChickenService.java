@@ -20,7 +20,6 @@ public class TestChickenService {
 	
 	private static final Integer ID = 1;
 	private static final String TYPE = "AA";
-	private static final String FRECUENCY = "1";
 	private static final Chicken CHICKEN = new Chicken();
 
 	
@@ -37,7 +36,6 @@ public class TestChickenService {
 	public void init() {
 		CHICKEN.setIdAnimal(ID);
 		CHICKEN.setType(TYPE);
-		CHICKEN.setFrecuency(FRECUENCY);
 	}
 	
 	@Test
@@ -49,7 +47,6 @@ public class TestChickenService {
 	private Chicken CreateChicken(String type, String frecuency) {
 		final Chicken ch = new Chicken();
 		ch.setType(TYPE);
-		ch.setFrecuency(FRECUENCY);
 		return ch;
 	}
 	
