@@ -60,11 +60,11 @@ public class ChickenServiceImpl implements ChickenService {
 		return chickenDTOs;
 	}
 
-	@Override
+	/*@Override
 	public List<Chicken> getAllByUserId(Integer page, Integer size, Integer id) {
 		final List<Chicken> chickens = new ArrayList<>();
-		chickenDao.findByIdUser(id, new PageRequest(page, size)).forEach(c -> chickens.add(c));
+		chickenDao.findAllByIdUser(id, new PageRequest(page, size)).forEach(c -> chickens.add(c));
 		return chickens;
-	}
+	}*/
 	
 }

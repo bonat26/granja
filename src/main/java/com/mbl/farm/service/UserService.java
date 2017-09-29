@@ -3,6 +3,7 @@ package com.mbl.farm.service;
 import java.util.List;
 
 import com.mbl.farm.dto.UserDTO;
+import com.mbl.farm.model.Chicken;
 import com.mbl.farm.model.User;
 
 public interface UserService {
@@ -21,4 +22,6 @@ public interface UserService {
 	User findById(Integer id);
 
 	List<UserDTO> transform(List<User> users);
+	
+	List<Chicken> getChickens(Integer page, Integer size);
 }
