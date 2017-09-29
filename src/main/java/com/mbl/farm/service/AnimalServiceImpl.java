@@ -26,19 +26,8 @@ public class AnimalServiceImpl implements AnimalService{
 		return mapper.toDTO(a);
 	}
 
-	@Override
 	public Animal transform(AnimalDTO a) {
 		return mapper.toModel(a);
-	}
-
-	@Override
-	public Animal create(Animal a) {
-		return animalDao.save(a);
-	}
-
-	@Override
-	public void update(Animal a) {
-		animalDao.save(a);
 	}
 
 	@Override
@@ -58,16 +47,22 @@ public class AnimalServiceImpl implements AnimalService{
 		return null;
 	}
 
-	
-	public void Delete(Animal a) {
-		animalDao.delete(a);
-	}
-
 	@Override
 	public List<AnimalDTO> transform(List<Animal> animals) {
 		final List<AnimalDTO> animalDTOs = new ArrayList<>();
 		animals.forEach(c -> animalDTOs.add(transform(c)));
 		return animalDTOs;
 	}
-
+	
+	public Animal create(Animal a) {
+		return animalDao.save(a);
+	}
+	
+	public void update(Animal a) {
+		animalDao.save(a);
+	}
+	
+	public void Delete(Animal a) {
+		animalDao.delete(a);
+	}
 }

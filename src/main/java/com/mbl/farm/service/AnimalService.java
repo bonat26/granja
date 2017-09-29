@@ -9,11 +9,7 @@ public interface AnimalService {
 
 	AnimalDTO transform(Animal a);
 
-	Animal transform(AnimalDTO a);
-
-	Animal create(Animal a);
-
-	void update(Animal a);
+	//Animal transform(AnimalDTO a);
 
 	List<Animal> getAll(Integer page, Integer size);
 

@@ -32,10 +32,25 @@ public class CowServiceImpl implements CowService{
 	}
 
 	@Override
+	public Cow create(Cow c) {
+		return cowDao.save(c);
+	}
+	
+	@Override
+	public void update(Cow c) {
+		cowDao.save(c);
+	}
+	
+	@Override
 	public List<Cow> getAll(Integer page, Integer size) {
 		List<Cow> cows = new ArrayList<>();
 		cowDao.findAll(new PageRequest(page, size)).forEach(c -> cows.add(c));
 		return cows;
+	}
+
+	@Override
+	public Cow findOne(Integer id) {
+		return cowDao.findOne(id);
 	}
 
 	@Override
@@ -44,6 +59,8 @@ public class CowServiceImpl implements CowService{
 		cows.forEach(c -> cowDTOs.add(transform(c)));
 		return cowDTOs;
 	}
+
+
 
 
 }

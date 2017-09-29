@@ -23,21 +23,6 @@ public class AnimalController {
 	
 	@Autowired
 	private AnimalService animalService;
-	
-	@RequestMapping(method = RequestMethod.POST)
-	public AnimalDTO create(@RequestBody AnimalDTO a) {
-		log.info("Intentando crear un animal");
-		final Animal animal = animalService.transform(a);
-		animalService.create(animal);
-		return animalService.transform(animal);
-	}
-
-	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-	public void update(@RequestBody AnimalDTO a) {
-		log.info("Vamos a actualizar un pollo");
-		final Animal animal = animalService.transform(a);
-		animalService.update(animal);
-	}
 
 	@RequestMapping(method = RequestMethod.GET)
 	public List<AnimalDTO> getAll(@RequestParam(name = "page") Integer page, @RequestParam(name = "size") Integer size) {
