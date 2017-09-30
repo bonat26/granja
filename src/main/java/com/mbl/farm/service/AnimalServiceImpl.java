@@ -53,14 +53,16 @@ public class AnimalServiceImpl implements AnimalService{
 		animals.forEach(c -> animalDTOs.add(transform(c)));
 		return animalDTOs;
 	}
+
+	@Override
+	public void update(Animal a) {
+		animalDao.save(a);
+	}
 	
 	public Animal create(Animal a) {
 		return animalDao.save(a);
 	}
 	
-	public void update(Animal a) {
-		animalDao.save(a);
-	}
 	
 	public void Delete(Animal a) {
 		animalDao.delete(a);

@@ -1,12 +1,18 @@
 package com.mbl.farm.service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.mbl.farm.dao.FarmerDao;
+import com.mbl.farm.dto.AnimalDTO;
 import com.mbl.farm.dto.ChickenDTO;
 import com.mbl.farm.dto.CowDTO;
 import com.mbl.farm.mapper.ChickenMapper;
 import com.mbl.farm.mapper.CowMapper;
+import com.mbl.farm.model.Animal;
 import com.mbl.farm.model.Chicken;
 import com.mbl.farm.model.Cow;
 import com.mbl.farm.model.User;
@@ -15,7 +21,13 @@ import com.mbl.farm.model.User;
 public class FarmerServiceImpl implements FarmerService{
 	
 	@Autowired
+	private FarmerDao farmerDao;
+	
+	@Autowired
 	private UserService userService;
+
+	@Autowired
+	private AnimalService animalService;
 	
 	@Autowired
 	private ChickenService chickenService;
@@ -41,9 +53,9 @@ public class FarmerServiceImpl implements FarmerService{
 
 	@Override
 	public Chicken create(Integer id, Chicken chicken) {
-		chicken.setUser(id);
+		final User user = userService.findById(id);
+		chicken.setUser(user);
 		chickenService.create(chicken);
-		User user = userService.findById(id);
 		user.getAnimals().add(chicken);
 		userService.update(user);
 		return chickenService.findOne(chicken.getIdAnimal());
@@ -61,12 +73,26 @@ public class FarmerServiceImpl implements FarmerService{
 
 	@Override
 	public Cow create(Integer id, Cow cow) {
-		cow.setUser(id);
+		final User user = userService.findById(id);
+		cow.setUser(user);
 		cowService.create(cow);
-		User user = userService.findById(id);
 		user.getAnimals().add(cow);
 		userService.update(user);
 		return cowService.findOne(cow.getIdAnimal());
+	}
+
+	@Override
+	public List<Animal> getAll(Integer id) {
+		final User user = userService.findById(id);
+		List<Animal> animals = new ArrayList<>();
+		farmerDao.findByUser(user).forEach(a -> animals.add(a));
+		return animals;
+		
+	}
+
+	@Override
+	public List<AnimalDTO> transform(List<Animal> animals) {
+		return animalService.transform(animals);
 	}
 
 }

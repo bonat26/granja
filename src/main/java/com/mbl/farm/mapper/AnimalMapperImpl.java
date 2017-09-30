@@ -7,18 +7,6 @@ import com.mbl.farm.model.Animal;
 
 @Component
 public class AnimalMapperImpl extends AbstractMapper<Animal, AnimalDTO> implements AnimalMapper{
-
-	/*@Autowired
-	private ListMapper listMapper;
-
-	@Override
-	public Animal toModel(AnimalDTO animalDTO) {
-		final Animal animal = super.toModel(animalDTO);
-		List<Production> prods = listMapper.toProdList(animalDTO.getProductionsIDs());
-		animal.setProductions(prods);
-		return animal;
-	}*/
-	
 	
 	@Override
 	public AnimalDTO toDTO(Animal model) {

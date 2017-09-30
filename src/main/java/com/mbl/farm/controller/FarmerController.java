@@ -1,5 +1,7 @@
 package com.mbl.farm.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -7,8 +9,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.mbl.farm.dto.AnimalDTO;
 import com.mbl.farm.dto.ChickenDTO;
 import com.mbl.farm.dto.CowDTO;
+import com.mbl.farm.model.Animal;
 import com.mbl.farm.model.Chicken;
 import com.mbl.farm.model.Cow;
 import com.mbl.farm.service.FarmerService;
@@ -37,6 +41,13 @@ public class FarmerController {
 		Cow cow = farmerService.transform(cowDTO);
 		cow = farmerService.create(id, cow);
 		return farmerService.transform(cow);
+	}
+	
+	@RequestMapping(value = "/{id}/animal", method = RequestMethod.GET)
+	public List<AnimalDTO> getAnimals(@PathVariable Integer id){
+		log.info("Vamos a recuperar los animales del usuario ".concat(id.toString()));
+		List<Animal> animals = farmerService.getAll(id);
+		return farmerService.transform(animals);
 	}
 	
 }

@@ -36,5 +36,5 @@ public abstract class Animal {
 	private List<Production> productions;
 	
 	@ManyToOne
-	private Integer user;
+	private User user;
 }

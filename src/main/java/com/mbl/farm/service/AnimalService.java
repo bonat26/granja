@@ -11,6 +11,8 @@ public interface AnimalService {
 
 	//Animal transform(AnimalDTO a);
 
+	void update(Animal animal);
+
 	List<Animal> getAll(Integer page, Integer size);
 
 	Animal findById(Integer id);
@@ -18,4 +20,5 @@ public interface AnimalService {
 	List<Animal> getTopAnimals(Integer size);
 
 	List<AnimalDTO> transform(List<Animal> animals);
+
 }
