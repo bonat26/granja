@@ -26,6 +26,6 @@ public class User {
 	@Column (name ="USERNAME", nullable = false)
 	private String name;
 	
-	@OneToMany(fetch = FetchType.LAZY)
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
 	private List<Animal> animals;
 }
