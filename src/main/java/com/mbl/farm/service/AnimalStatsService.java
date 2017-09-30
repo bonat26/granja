@@ -5,7 +5,7 @@ import java.util.List;
 import com.mbl.farm.dto.AnimalWinsDTO;
 import com.mbl.farm.model.Animal;
 
-public interface StatsService {
+public interface AnimalStatsService {
 	
 	AnimalWinsDTO transform(Animal a);
 

@@ -7,8 +7,10 @@ import org.springframework.data.repository.PagingAndSortingRepository;
 
 import com.mbl.farm.model.Animal;
 
-public interface StatsDao extends PagingAndSortingRepository<Animal, Integer>{
+public interface AnimalStatsDao extends PagingAndSortingRepository<Animal, Integer>{
 	
-	@Query(value = "Select a from Animal a order by")
+	@Query(value = "Select a from Animal a join fetch a.productions p order by p.sellPrice - p.buyPrice")
 	List<Animal> findTopAnimals();
+
+	
 }

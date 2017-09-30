@@ -4,29 +4,35 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-import com.mbl.farm.dao.StatsDao;
+import com.mbl.farm.dao.AnimalStatsDao;
 import com.mbl.farm.dto.AnimalWinsDTO;
-import com.mbl.farm.mapper.StatsMapper;
+import com.mbl.farm.mapper.AnimalWinsMapper;
 import com.mbl.farm.model.Animal;
 
-public class StatsServiceImpl implements StatsService{
+@Service
+public class AnimalStatsServiceImpl implements AnimalStatsService{
 	
 	@Autowired
-	private StatsDao statsDao;
+	private AnimalStatsDao statsDao;
 	
 	@Autowired
-	private StatsMapper mapper;
+	private AnimalWinsMapper animalWinsMapper;
 
 	@Override
 	public AnimalWinsDTO transform(Animal a) {
-		return mapper.toDTO(a);
+		return animalWinsMapper.toDTO(a);
 	}
 	
 	@Override
 	public List<Animal> getTopAnimals(Integer size) {
-		return null;
+		final List<Animal> allAnimals = statsDao.findTopAnimals();
+		final List<Animal> topAnimals = allAnimals.subList(0, size);
+		return topAnimals;
 	}
+
+
 
 	@Override
 	public List<AnimalWinsDTO> transform(List<Animal> animals) {
@@ -34,6 +40,5 @@ public class StatsServiceImpl implements StatsService{
 		animals.forEach(a -> animalsWinsDto.add(transform(a)));
 		return animalsWinsDto;
 	}
-
 
 }

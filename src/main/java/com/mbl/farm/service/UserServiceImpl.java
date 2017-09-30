@@ -10,7 +10,6 @@ import org.springframework.stereotype.Service;
 import com.mbl.farm.dao.UserDao;
 import com.mbl.farm.dto.UserDTO;
 import com.mbl.farm.mapper.UserMapper;
-import com.mbl.farm.model.Chicken;
 import com.mbl.farm.model.User;
 
 @Service
@@ -67,14 +66,5 @@ public class UserServiceImpl implements UserService {
 		users.forEach(c -> userDTOs.add(transform(c)));
 		return userDTOs;
 	}
-
-	@Override
-	public List<Chicken> getChickens(Integer page, Integer size) {
-		return userDao.findByAnimals(page, size);
-	}
-
-	
-
-	
 
 }

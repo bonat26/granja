@@ -13,6 +13,7 @@ import javax.persistence.Inheritance;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+
 import lombok.Data;
 
 @Data
@@ -30,6 +31,6 @@ public abstract class Animal {
 	@Column(columnDefinition = "varchar(2)")
 	private String type;
 	
-	@OneToMany(fetch = FetchType.LAZY)
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "animal")
 	private List<Production> productions;
 }

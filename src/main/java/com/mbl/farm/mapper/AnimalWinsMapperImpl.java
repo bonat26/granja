@@ -9,7 +9,7 @@ import com.mbl.farm.model.Animal;
 import com.mbl.farm.model.Production;
 
 @Component
-public class StatsMapperImpl extends AbstractMapper<Animal, AnimalWinsDTO> implements StatsMapper{
+public class AnimalWinsMapperImpl extends AbstractMapper<Animal, AnimalWinsDTO> implements AnimalWinsMapper{
 
 	@Override
 	public AnimalWinsDTO toDTO(Animal model) {
@@ -17,8 +17,9 @@ public class StatsMapperImpl extends AbstractMapper<Animal, AnimalWinsDTO> imple
 		animalWinsDTO.setWins(getWins(model));
 		return null;
 	}
-
-	private Integer getWins(Animal model) {
+	
+	@Override
+	public Integer getWins(Animal model) {
 		Integer wins = 0;
 		List<Production> productions = model.getProductions();
 		for(Integer i = 0; i < productions.size(); i++) {
