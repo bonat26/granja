@@ -126,7 +126,6 @@ public class TestAnimalService {
 		
 		final List<AnimalDTO> dtos = service.transform(models);
 		Assert.assertNotNull(dtos);
-		//Fails here
 		Assert.assertEquals(dtos, dtosMocks);
 	}
 	
@@ -141,7 +140,6 @@ public class TestAnimalService {
 		
 		final List<AnimalDTO> dtos = service.transform(models);
 		Assert.assertNotNull(dtos);
-		//Fails here
 		Assert.assertNotEquals(dtos, dtosMocks);
 	}
 	
@@ -156,9 +154,9 @@ public class TestAnimalService {
 	public List<Animal> createListOfAnimals(){
 		final Animal animal1 = new Chicken();
 		final Animal animal2 = new Chicken();
-		final Animal animal3 = new Cow();
+		final Animal animal3 = new Chicken();
 		final Animal animal4 = new Chicken();
-		final Animal animal5 = new Cow();
+		final Animal animal5 = new Chicken();
 		final List<Animal> animals = new ArrayList<>();
 		animals.add(animal1);
 		animals.add(animal2);
