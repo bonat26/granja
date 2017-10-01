@@ -79,8 +79,8 @@ public class TestChickenController {
 		Mockito.when(chickenService.getAll(PAGE, SIZE)).thenReturn(chickensMock);
 		Mockito.when(chickenService.transform(chickensMock)).thenReturn(chickensDTOsMock);
 		
-		final List<ChickenDTO> animalsDTOs = chickenController.getAll(PAGE, SIZE);
-		Assert.assertNull(animalsDTOs);
+		final List<ChickenDTO> chickensDTOs = chickenController.getAll(PAGE, SIZE);
+		Assert.assertNull(chickensDTOs);
 		
 	}
 	
