@@ -9,7 +9,7 @@ public interface AnimalService {
 
 	AnimalDTO transform(Animal a);
 
-	//Animal transform(AnimalDTO a);
+	Animal transform(AnimalDTO a);
 
 	void update(Animal animal);
 

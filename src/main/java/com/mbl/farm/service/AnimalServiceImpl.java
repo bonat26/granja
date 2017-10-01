@@ -25,7 +25,8 @@ public class AnimalServiceImpl implements AnimalService{
 	public AnimalDTO transform(Animal a) {
 		return mapper.toDTO(a);
 	}
-
+	
+	@Override
 	public Animal transform(AnimalDTO a) {
 		return mapper.toModel(a);
 	}
@@ -64,7 +65,7 @@ public class AnimalServiceImpl implements AnimalService{
 	}
 	
 	
-	public void Delete(Animal a) {
+	public void delete(Animal a) {
 		animalDao.delete(a);
 	}
 }
