@@ -10,6 +10,7 @@ import com.mbl.farm.model.Production;
 
 public interface AnimalStatsDao extends PagingAndSortingRepository<Production, Integer>{
 	
+	//No encuentro la manera de obtener la información...
 	@Query(value = "Select a from Animal a join fetch a.productions p order by p.sellPrice - p.buyPrice")
 	List<Animal> findTopAnimals();
 	
