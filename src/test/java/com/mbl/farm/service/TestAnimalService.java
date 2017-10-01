@@ -15,7 +15,6 @@ import com.mbl.farm.dto.AnimalDTO;
 import com.mbl.farm.mapper.AnimalMapper;
 import com.mbl.farm.model.Animal;
 import com.mbl.farm.model.Chicken;
-import com.mbl.farm.model.Cow;
 
 @RunWith(MockitoJUnitRunner.class)
 public class TestAnimalService {

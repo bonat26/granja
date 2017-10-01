@@ -10,26 +10,33 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
-import com.mbl.farm.dao.ProductionDao;
+import com.mbl.farm.dao.ProducerDao;
 import com.mbl.farm.dto.ProductionDTO;
 import com.mbl.farm.mapper.ProductionMapper;
+import com.mbl.farm.model.Animal;
+import com.mbl.farm.model.Chicken;
 import com.mbl.farm.model.Production;
 
 @RunWith(MockitoJUnitRunner.class)
-public class TestProductionService {
-
+public class TestProducerService {
+	
 	private static final Integer ID = 1;
-	private static final Integer WRONGID = 2;
 	private static final Integer BUYPRICE = 5;
 	private static final Integer SELLPRICE = 10;
 	private static final Integer WRONGBUYPRICE = 0;
 	private static final Integer WRONGSELLPRICE = 0;
-	
+
 	@InjectMocks
-	private ProductionService service = new ProductionServiceImpl();
+	private ProducerService service = new ProducerServiceImpl();
 	
 	@Mock
-	private ProductionDao dao;
+	private ProducerDao dao;
+	
+	@Mock
+	private ProductionService productionService;
+	
+	@Mock
+	private AnimalService animalService;
 	
 	@Mock
 	private ProductionMapper mapper;
@@ -72,8 +79,8 @@ public class TestProductionService {
 		modelMock.setBuyPrice(BUYPRICE);
 		modelMock.setSellPrice(SELLPRICE);
 		final ProductionDTO dtoMock = new ProductionDTO();
-		dtoMock.setBuyPrice(BUYPRICE);
-		dtoMock.setSellPrice(SELLPRICE);
+		dtoMock.setBuyPrice(WRONGBUYPRICE);
+		dtoMock.setSellPrice(WRONGSELLPRICE);
 		Mockito.when(mapper.toModel(dtoMock)).thenReturn(modelMock);
 		
 		final Production model = service.transform(dtoMock);
@@ -99,65 +106,10 @@ public class TestProductionService {
 	}
 	
 	@Test
-	public void testFindOneOk() {
-		final Production modelMock = new Production();
-		modelMock.setIdProduction(ID);
-		modelMock.setBuyPrice(BUYPRICE);
-		modelMock.setSellPrice(SELLPRICE);
-		Mockito.when(dao.findOne(ID)).thenReturn(modelMock);
-		
-		final Production model = service.findById(ID);
-		Assert.assertNotNull(model);
-		Assert.assertEquals(model.getBuyPrice(), BUYPRICE);
-		Assert.assertEquals(model.getSellPrice(), SELLPRICE);
-	}
-	
-	@Test
-	public void testFindOneKo() {
-		final Production modelMock = new Production();
-		modelMock.setIdProduction(WRONGID);
-		Mockito.when(dao.findOne(ID)).thenReturn(modelMock);
-		
-		final Production model = service.findById(ID);
-		Assert.assertNotNull(model);
-		Assert.assertNotEquals(model.getIdProduction(), ID);
-	}
-	
-	@Test
-	public void testCreateOk() {
-		final Production modelMock = new Production();
-		modelMock.setBuyPrice(BUYPRICE);
-		modelMock.setSellPrice(SELLPRICE);
-		Mockito.when(dao.save(modelMock)).thenReturn(modelMock);
-		
-		final Production model = service.create(modelMock);
-		Assert.assertNotNull(model);
-		Assert.assertEquals(model.getBuyPrice(), BUYPRICE);
-		Assert.assertEquals(model.getSellPrice(), SELLPRICE);
-		
-	}
-	
-	@Test
-	public void testCreateKo() {
-		final Production modelMock = new Production();
-		modelMock.setBuyPrice(WRONGBUYPRICE);
-		modelMock.setSellPrice(WRONGSELLPRICE);
-		Mockito.when(dao.save(modelMock)).thenReturn(modelMock);
-		
-		final Production model = service.create(modelMock);
-		Assert.assertNotNull(model);
-		Assert.assertNotEquals(model.getBuyPrice(), BUYPRICE);
-		Assert.assertNotEquals(model.getSellPrice(), SELLPRICE);
-		
-	}
-	
-	@Test
 	public void testTransformListOk() {
-		final Production model = new Production();
-		final ProductionDTO dtoMock = new ProductionDTO();
 		final List<Production> models = createListOfProductions();
 		final List<ProductionDTO> dtosMocks = createListOfProductionsDTOs();
-		Mockito.when(service.transform(model)).thenReturn(dtoMock);
+		Mockito.when(productionService.transform(models)).thenReturn(dtosMocks);
 		
 		final List<ProductionDTO> dtos = service.transform(models);
 		Assert.assertNotNull(dtos);
@@ -166,12 +118,11 @@ public class TestProductionService {
 	
 	@Test
 	public void testTransformListKo() {
-		final Production model = new Production();
-		final ProductionDTO dtoMock = new ProductionDTO();
 		final List<Production> models = createListOfProductions();
+		final List<ProductionDTO> dtosMocks = createListOfProductionsDTOs();
 		final List<ProductionDTO> wrongDtosMocks = createListOfProductionsDTOs();
 		wrongDtosMocks.remove(0);
-		Mockito.when(service.transform(model)).thenReturn(dtoMock);
+		Mockito.when(productionService.transform(models)).thenReturn(dtosMocks);
 		
 		final List<ProductionDTO> dtos = service.transform(models);
 		Assert.assertNotNull(dtos);
@@ -179,17 +130,15 @@ public class TestProductionService {
 	}
 	
 	@Test
-	public void testUpdate() {
-		//For coverage
-		final Production model = new Production();
-		service.update(model);
-	}
-	
-	@Test
-	public void testDelete() {
-		//For coverage
-		final Production model = new Production();
-		service.delete(model);
+	public void testGetAllOk() {
+		final Animal animal = new Chicken();
+		Mockito.when(animalService.findById(ID)).thenReturn(animal);
+		final List<Production> productionsMocks = createListOfProductions();
+		Mockito.when(dao.findByAnimal(animal)).thenReturn(productionsMocks);
+		
+		final List<Production> productions = service.getAll(ID);
+		Assert.assertNotNull(productions);
+		Assert.assertEquals(productions, productionsMocks);
 	}
 	
 	public List<Production> createListOfProductions(){
